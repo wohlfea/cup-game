@@ -58,4 +58,21 @@ function shuffle (i) {
    }, 1000)
 };
 
-shuffle(10); //Argument is however many times you want to shuffle
+function assignRightAnswer() {
+  var randomNumber = Math.floor(Math.random()*3);
+  if (randomNumber === 0 ){
+    spotOne.children[0].setAttribute('class', 'highlight');
+    spotOne.children[0].setAttribute('id', 'winner');
+  }else if(randomNumber === 1){
+    spotTwo.children[0].setAttribute('class', 'highlight');
+    spotTwo.children[0].setAttribute('id', 'winner');
+  }else if(randomNumber === 2){
+    spotThree.children[0].setAttribute('class', 'highlight');
+    spotThree.children[0].setAttribute('id', 'winner');
+  }
+}
+
+// console.log()
+assignRightAnswer();
+
+// shuffle(10); //Argument is however many times you want to shuffle
