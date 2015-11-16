@@ -28,7 +28,7 @@ div {
 }
 
 .highlight {
-  animation: highlightAnswer 2s;
+  animation: highlightAnswer 1s;
 }
 
 @keyframes highlightAnswer {

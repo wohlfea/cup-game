@@ -12,8 +12,8 @@ function animateFirstToThird(childOfSpotOne, childOfSpotThree) {
   setTimeout(function(){
     childOfSpotOne.setAttribute('class', null);
     childOfSpotThree.setAttribute('class', null);
-    spotOne.appendChild(childOfSpotThree);
-    spotThree.appendChild(childOfSpotOne);
+    spotOne.children[0].appendChild(childOfSpotThree);
+    spotThree.children[0].appendChild(childOfSpotOne);
   }, 980)
 }
 
@@ -23,8 +23,8 @@ function animateSecondToOne(childOfSpotOne, childOfSpotTwo) {
   setTimeout(function(){
     childOfSpotTwo.setAttribute('class', null);
     childOfSpotOne.setAttribute('class', null);
-    spotOne.appendChild(childOfSpotTwo);
-    spotTwo.appendChild(childOfSpotOne);
+    spotOne.children[0].appendChild(childOfSpotTwo);
+    spotTwo.children[0].appendChild(childOfSpotOne);
   }, 980)
 }
 
@@ -34,19 +34,19 @@ function animateSecondToThird(childOfSpotTwo, childOfSpotThree) {
   setTimeout(function(){
     childOfSpotTwo.setAttribute('class', null);
     childOfSpotThree.setAttribute('class', null);
-    spotTwo.appendChild(childOfSpotThree);
-    spotThree.appendChild(childOfSpotTwo);
+    spotTwo.children[0].appendChild(childOfSpotThree);
+    spotThree.children[0].appendChild(childOfSpotTwo);
   }, 980)
 }
 
 function pickRandomShuffle() {
   var randomNumber = Math.floor(Math.random()*funcArray.length);
   if (randomNumber === 0) {
-    funcArray[0](spotOne.children[0], spotThree.children[0]);
+    funcArray[0](spotOne.children[0].children[0], spotThree.children[0].children[0]);
   } else if (randomNumber === 1) {
-    funcArray[1](spotOne.children[0], spotTwo.children[0]);
+    funcArray[1](spotOne.children[0].children[0], spotTwo.children[0].children[0]);
   } else if (randomNumber === 2) {
-    funcArray[2](spotTwo.children[0], spotThree.children[0]);
+    funcArray[2](spotTwo.children[0].children[0], spotThree.children[0].children[0]);
   }
 }
 
@@ -73,6 +73,10 @@ function assignRightAnswer() {
 }
 
 // console.log()
-assignRightAnswer();
+function runGame() {
+  assignRightAnswer();
+  setTimeout(shuffle(10), 2000); //Argument is however many times you want to shuffle
+}
 
-// shuffle(10); //Argument is however many times you want to shuffle
+runGame();
+// shuffle(5);
