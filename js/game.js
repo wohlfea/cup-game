@@ -5,6 +5,22 @@ var red = document.getElementById('red');
 var blue = document.getElementById('blue');
 var yellow = document.getElementById('yellow');
 var funcArray = [animateFirstToThird, animateSecondToOne, animateSecondToThird];
+var options = [];
+
+function getOptions() {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0; i<vars.length; i++) {
+    var pair = vars[i].split("=");
+    options[i] = pair[1]
+  }
+} getOptions();
+
+function parseOptions(options) {
+  //translate options[0] to milliseconds
+  //set # of shuffles to options[1]
+}
+
 
 function animateFirstToThird(childOfSpotOne, childOfSpotThree) {
   childOfSpotOne.setAttribute('class', 'oneToThree');

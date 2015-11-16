@@ -15,14 +15,14 @@
   </header>
   <section id="main">
     <h2>Options</h2>
-    <form>
-      <p>Speed</p>
+    <form id="options" action="game.html" method="get">
+      <label for="speed">Speed</label>
       <select name="speed">
         <option value="Slow">Slow</option>
         <option value="Medium">Medium</option>
         <option value="Fast">Fast</option>
       </select>
-      <p>Number of Shuffles</p>
+      <label for="shuffles">Number of Shuffles</label>
       <select name="shuffles">
         <option value="5">5</option>
         <option value="10">10</option>
@@ -31,5 +31,6 @@
       <button id="start" type="submit">Start</button>
     </form>
   </section>
+  <script type="text/javascript" src="js/options.js"></script>
 </body>
 </html>
