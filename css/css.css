@@ -1,0 +1,98 @@
+body {
+  font-family: Arial;
+}
+div {
+  width: 250px;
+  height: 250px;
+  margin: 50px;
+  margin-top: 300px;
+  position: relative;
+}
+.oneToThree {
+  animation: oneToThrees 1s;
+  transform-origin: 100% 50%;
+}
+.threeToOne {
+  animation: threeToOnes 1s;
+  transform-origin: 100% 50%;
+}
+.oneToTwo {
+  animation: oneToTwos 1s;
+  transform-origin: 100% 50%;
+}
+.twoToOne {
+  animation: twoToOnes 1s;
+  transform-origin: 100% 50%;
+}
+.twoToThree {
+  animation: twoToThrees 1s;
+  transform-origin: 100% 50%;
+}
+.threeToTwo {
+  animation: threeToTwos 1s;
+  transform-origin: 100% 50%;
+}
+
+
+@keyframes oneToThrees {
+    0%   {bottom: 0px;
+          left: 0px;}
+    50%  {bottom: 300px;
+          left: 350px;}
+    100% {bottom: 0px;
+          left: 700px;}
+}
+@keyframes threeToOnes {
+    0%   {top: 0px;
+          right: 0px;}
+    50%  {top: 300px;
+          right: 350px;}
+    100% {top: 0px;
+          right: 700px;}
+}
+@keyframes oneToTwos {
+    0%   {top: 0px;
+          left: 0;}
+    50%  {top: 300px;
+          left: 175px;}
+    100% {top: 0px;
+          left: 350px;}
+}
+@keyframes twoToOnes {
+    0%   {bottom: 0px;
+          right: 0px;}
+    50%  {bottom: 300px;
+          right: 175px;}
+    100% {bottom: 0px;
+          right: 350px;}
+}
+@keyframes twoToThrees {
+    0%   {top: 0px;
+          left: 0;}
+    50%  {top: 300px;
+          left: 175px;}
+    100% {top: 0px;
+          left: 350px;}
+}
+@keyframes threeToTwos {
+    0%   {bottom: 0px;
+          right: 0px;}
+    50%  {bottom: 300px;
+          right: 175px;}
+    100% {bottom: 0px;
+          right: 350px;}
+}
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+}
+#red {
+  background-color: red;
+}
+#blue {
+  background-color: blue;
+}
+#yellow {
+  background-color: yellow;
+}

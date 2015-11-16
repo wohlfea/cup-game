@@ -1,0 +1,30 @@
+Proposal
+--------
+Team Name: Group3
+
+We're making a game.
+Based on the classic cup and ball game.
+
+Ideas include making the number of elements dynamic between 3 and 7 (more than 3 is stretch goal)
+
+User selects parameters:
+
+Number of shuffles
+Speed
+Different items to shuffle(stretch goal)
+
+User is shown the picture they are supposed to keep track of. Shuffling begins. Music Starts (stretch goal)
+
+During shuffle start button and options are disabled until animation is complete.
+
+User selects the picture they believe is the right answer. Feedback is given.
+
+If correct, score is updated and we will use local storage to keep record of the high score.
+
+
+Three pages/domain model:
+
+About Us.
+Options Selection Page.
+Animation Page.
+Score Page.
