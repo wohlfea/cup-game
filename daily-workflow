@@ -1,0 +1,12 @@
+DAILY WORKFLOW
+
+1. everyone pull updated development branch
+2. decide on features/issues for all to work on
+3. assign reviewers for issues
+4. create feature branch if needed, otherwise checkout feature branch and merge with updated development branch
+5. work
+6. when work is complete, push feature branch
+7. make pull request
+8. reviewer checks feature
+9. reviewer merges changes to development branch
+10. at EOD, make final daily merges to development branch; everyone pull updated dev branch
