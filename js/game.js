@@ -1,11 +1,10 @@
 var spotOne = document.getElementById('spotOne');
 var spotTwo = document.getElementById('spotTwo');
 var spotThree = document.getElementById('spotThree');
-var red = document.getElementById('red');
-var blue = document.getElementById('blue');
-var yellow = document.getElementById('yellow');
 var funcArray = [animateFirstToThird, animateSecondToOne, animateSecondToThird];
 var options = [];
+var guessing = false;
+
 
 function getOptions() {
   var query = window.location.search.substring(1);
@@ -72,19 +71,20 @@ function shuffle (i) {
       pickRandomShuffle();
       if (--i) shuffle(i);
    }, 1000)
+   guessing = true;
 };
 
 function assignRightAnswer() {
   var randomNumber = Math.floor(Math.random()*3);
   if (randomNumber === 0 ){
     spotOne.children[0].setAttribute('class', 'highlight');
-    spotOne.children[0].setAttribute('id', 'winner');
+    spotOne.children[0].children[0].setAttribute('id', 'winner');
   }else if(randomNumber === 1){
     spotTwo.children[0].setAttribute('class', 'highlight');
-    spotTwo.children[0].setAttribute('id', 'winner');
+    spotTwo.children[0].children[0].setAttribute('id', 'winner');
   }else if(randomNumber === 2){
     spotThree.children[0].setAttribute('class', 'highlight');
-    spotThree.children[0].setAttribute('id', 'winner');
+    spotThree.children[0].children[0].setAttribute('id', 'winner');
   }
 }
 
@@ -94,5 +94,70 @@ function runGame() {
   setTimeout(shuffle(10), 2000); //Argument is however many times you want to shuffle
 }
 
+function spotOneClick () {
+  if(guessing) {
+    if(spotOne.children[0].children[0].id === 'winner'){
+      alert('You Win!');
+    } else {
+      alert('You Lose!');
+    } //produce feedback
+  }
+  guessing = false;
+}
+
+function spotTwoClick () {
+  if(guessing) {
+    if(spotTwo.children[0].children[0].id === 'winner'){
+      alert('You Win!');
+    } else {
+      alert('You Lose!');
+    } //produce feedback
+  }
+  guessing = false;
+}
+
+function spotThreeClick () {
+  if(guessing) {
+    if(spotThree.children[0].children[0].id === 'winner'){
+      alert('You Win!');
+    } else {
+      alert('You Lose!');
+    } //produce feedback
+  }
+  guessing = false;
+}
+
 runGame();
 // shuffle(5);
+
+spotOne.addEventListener('click', spotOneClick);
+spotTwo.addEventListener('click', spotTwoClick);
+spotThree.addEventListener('click', spotThreeClick);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
