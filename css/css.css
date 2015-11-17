@@ -104,3 +104,7 @@ div {
   border: 2px;
   border-color: green;
 }
+
+#feedback {
+  display: none;
+}

@@ -96,3 +96,16 @@ function runGame() {
 
 runGame();
 // shuffle(5);
+
+var score;
+var feedback = document.getElementById('feedback');
+//after user clicks their answer, feedback.style.display = 'block';
+feedback.addEventListener('click', giveFeedback);
+
+function giveFeedback() {
+  if (win) {
+    feedback.innerHTML = '<p>You win! Your score is ' + score + '. <br />Click to see high scores.';
+  } else {
+    feedback.innerHTML = '<p>You lose! Your score is ' + score + '. <br />Click to see high scores.';
+  }
+}
