@@ -152,8 +152,8 @@ function spotTwoClick () {
       isHighScore(score);
     } else {
       popup.setAttribute('class', 'popup');
-      // feedback.style.display = 'flex';
-      // feedback.style.color = 'red';
+      feedback.style.display = 'flex';
+      feedback.style.color = 'red';
       feedback.innerHTML = '<a href="scores.html" class="lose">You lose! Your score is ' + score + '. <br />Click to see high scores.</a>';
     } //produce feedback
   }
@@ -165,14 +165,14 @@ function spotThreeClick () {
     if(spotThree.children[0].children[0].id === 'winner'){
       score = speed * shuffles;
       popup.setAttribute('class', 'popup');
-      // feedback.style.display = 'flex';
-      // feedback.style.color = 'green';
+      feedback.style.display = 'flex';
+      feedback.style.color = 'green';
       feedback.innerHTML = '<a href="scores.html" class="win">You win! Your score is ' + score + '. <br />Click to see high scores.</a>';      isHighScore(score);
       isHighScore(score);
     } else {
       popup.setAttribute('class', 'popup');
-      // feedback.style.display = 'flex';
-      // feedback.style.color = 'red';
+      feedback.style.display = 'flex';
+      feedback.style.color = 'red';
       feedback.innerHTML = '<a href="scores.html" class="lose">You lose! Your score is ' + score + '. <br />Click to see high scores.</a>';
     } //produce feedback
   }

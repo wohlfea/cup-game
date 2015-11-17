@@ -115,9 +115,22 @@ div {
   justify-content: center;
 }
 
-#feedback a{
+#feedback a {
+ /* text-decoration: none;
+  font-size: 30px;
+  color: red;*/
+}
+
+.win {
   text-decoration: none;
   font-size: 30px;
+  color: green;
+}
+
+.lose {
+  text-decoration: none;
+  font-size: 30px;
+  color: red;
 }
 
 .popup {
@@ -142,16 +155,6 @@ div {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.win {
-  display: flex;
-  color: green;
-}
-
-.lose {
-  display: flex;
-  color: red;
 }
 
 @keyframes popupFeedBack {
