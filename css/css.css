@@ -4,35 +4,39 @@ body {
 div {
   width: 250px;
   height: 250px;
-  margin: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
   margin-top: 300px;
   position: relative;
 }
 .oneToThree {
   animation: oneToThrees 1s;
-  transform-origin: 100% 50%;
 }
 .threeToOne {
   animation: threeToOnes 1s;
-  transform-origin: 100% 50%;
 }
 .oneToTwo {
   animation: oneToTwos 1s;
-  transform-origin: 100% 50%;
 }
 .twoToOne {
   animation: twoToOnes 1s;
-  transform-origin: 100% 50%;
 }
 .twoToThree {
   animation: twoToThrees 1s;
-  transform-origin: 100% 50%;
 }
 .threeToTwo {
   animation: threeToTwos 1s;
-  transform-origin: 100% 50%;
 }
 
+.highlight {
+  animation: highlightAnswer 1s;
+}
+
+@keyframes highlightAnswer {
+    0%   {background-color: gold;}
+    50%  {background-color: gold;}
+    100% {background-color: gold;}
+}
 
 @keyframes oneToThrees {
     0%   {bottom: 0px;
@@ -96,3 +100,52 @@ div {
 #yellow {
   background-color: yellow;
 }
+
+.highlight:hover {
+  border: 2px;
+  border-color: green;
+}
+
+#feedback {
+  padding: 2%;
+  display: none;
+  text-align: center;
+  text-decoration: none;
+}
+
+#feedback a{
+  padding-top: 5%;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.popup {
+  animation: popupFeedBack 1s;
+  animation-fill-mode: forwards;
+  height: 300px;
+  width: 450px;
+  position: fixed;
+  top: 0%;
+  right: 44%;
+  left: 34.38%;
+  z-index: 999;
+  margin: auto;
+}
+
+@keyframes popupFeedBack {
+    0%   {visibility: hidden;
+          opacity: 0;
+          background-color: black;
+          z-index: -1;}
+    100% {visibility: visible;
+          opacity: 1;
+        /*  color: gold;*/
+          background-color: black;
+          z-index: 200;
+          top: 50%;}
+}
+
+
+
+
+

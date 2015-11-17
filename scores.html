@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>About Game</title>
+</head>
+<body>
+<section id="page">
+  <header>
+    <h1>Cup Game</h1>
+    <nav>
+      <p><a href="index.html">Play the Game</a></p>
+      <p><a href="about.html">About Us</a></p>
+    </nav>
+  </header>
+  <form action="scores.html">
+    <p>Name:</p>
+      <input type="text" name="name" maxlength="3" />
+  </form>
+  <div id="highscores">
+    <h2>High Scores</h2>
+    <table>
+      <thead>
+        <td>Rank</td>
+        <td>User</td>
+        <td>Score</td>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <br>
+  <form id="play" action="index.html" method="get">
+  <button type="submit">Play again</button>
+</form>
+  <script src="js/scores.js"></script>
+</section>
+</body>
+</html>
