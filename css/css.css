@@ -4,7 +4,8 @@ body {
 div {
   width: 250px;
   height: 250px;
-  margin: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
   margin-top: 300px;
   position: relative;
 }
@@ -106,5 +107,45 @@ div {
 }
 
 #feedback {
+  padding: 2%;
   display: none;
+  text-align: center;
+  text-decoration: none;
 }
+
+#feedback a{
+  padding-top: 5%;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.popup {
+  animation: popupFeedBack 1s;
+  animation-fill-mode: forwards;
+  height: 300px;
+  width: 450px;
+  position: fixed;
+  top: 0%;
+  right: 44%;
+  left: 34.38%;
+  z-index: 999;
+  margin: auto;
+}
+
+@keyframes popupFeedBack {
+    0%   {visibility: hidden;
+          opacity: 0;
+          background-color: black;
+          z-index: -1;}
+    100% {visibility: visible;
+          opacity: 1;
+        /*  color: gold;*/
+          background-color: black;
+          z-index: 200;
+          top: 50%;}
+}
+
+
+
+
+
