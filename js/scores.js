@@ -19,9 +19,10 @@ function makeTable(){
 }
 
 function checkLocal() {
-  if (localStorage.scores) {
+  localStorage.setItem('scores', JSON.stringify([['AAA',3]]))
+  if (localStorage.scores){
     scores = JSON.parse(localStorage.scores);
-  } else {
+  }else {
     scores = [['AAA',3],['ABB',3],['BBB',3],['CCC',3],['DDD',3]];
   }
 }
