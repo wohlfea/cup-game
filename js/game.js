@@ -38,39 +38,39 @@ function parseOptions(options) {
   shuffles = parseInt(options[1]);
   //shFactor = shuffles;
   //score = spFactor * shFactor;
-  console.log('sp=' + speed + '; classtime=' + classTime + '; sh=' + shuffles);
+  console.log('sp=' + speed + '; classTime=' + classTime + '; sh=' + shuffles);
   return speed, shuffles;
 }
 
 
 function animateFirstToThird(childOfSpotOne, childOfSpotThree) {
-  childOfSpotOne.setAttribute('class', 'oneToThree');
-  childOfSpotThree.setAttribute('class', 'threeToOne');
+  childOfSpotThree.style.animation = 'threeToOnes ' + speed + 'ms';
+  childOfSpotOne.style.animation = 'oneToThrees ' + speed + 'ms';
   setTimeout(function(){
-    childOfSpotOne.setAttribute('class', null);
-    childOfSpotThree.setAttribute('class', null);
+    childOfSpotOne.style.animation = null;
+    childOfSpotThree.style.animation = null;
     spotOne.children[0].appendChild(childOfSpotThree);
     spotThree.children[0].appendChild(childOfSpotOne);
   }, classTime)
 }
 
 function animateSecondToOne(childOfSpotOne, childOfSpotTwo) {
-  childOfSpotTwo.setAttribute('class', 'twoToOne');
-  childOfSpotOne.setAttribute('class', 'oneToTwo');
+  childOfSpotTwo.style.animation = 'twoToOnes ' + speed + 'ms';
+  childOfSpotOne.style.animation = 'oneToTwos ' + speed + 'ms';
   setTimeout(function(){
-    childOfSpotTwo.setAttribute('class', null);
-    childOfSpotOne.setAttribute('class', null);
+    childOfSpotTwo.style.animation = null;
+    childOfSpotOne.style.animation = null;
     spotOne.children[0].appendChild(childOfSpotTwo);
     spotTwo.children[0].appendChild(childOfSpotOne);
   }, classTime)
 }
 
 function animateSecondToThird(childOfSpotTwo, childOfSpotThree) {
-  childOfSpotTwo.setAttribute('class', 'twoToThree');
-  childOfSpotThree.setAttribute('class', 'threeToTwo');
+  childOfSpotTwo.style.animation = 'twoToThrees ' + speed + 'ms';
+  childOfSpotThree.style.animation = 'threeToTwos ' + speed + 'ms';
   setTimeout(function(){
-    childOfSpotTwo.setAttribute('class', null);
-    childOfSpotThree.setAttribute('class', null);
+    childOfSpotTwo.style.animation = null;
+    childOfSpotThree.style.animation = null;
     spotTwo.children[0].appendChild(childOfSpotThree);
     spotThree.children[0].appendChild(childOfSpotTwo);
   }, classTime)
@@ -118,7 +118,8 @@ function runGame() {
   getOptions();
   parseOptions(options);
   assignRightAnswer();
-  setTimeout(shuffle(speed, shuffles), 2000); //Argument is however many times you want to shuffle
+  setTimeout(function() {
+    shuffle(speed, shuffles)}, 1000); //Argument is however many times you want to shuffle
 }
 
 function spotOneClick () {
@@ -130,12 +131,12 @@ function spotOneClick () {
       feedback.style.display = 'block';
       feedback.style.color = 'green';
       feedback.innerHTML = '<a href="scores.html">You win! Your score is ' + score + '. <br />Click to see high scores.</a>';
-      localStorage.setItem('allPictures', JSON.stringify(allPictures));
-      } else {
-        popup.setAttribute('class', 'popup');
-        feedback.style.display = 'block';
-        feedback.style.color = 'red';
-        feedback.innerHTML = '<a href="scores.html">You lose! Your score is ' + score + '. <br />Click to see high scores.</a>';
+      feedback.innerHTML = '<p>You win! Your score is ' + score + '. <br />Click to see high scores.';
+    } else {
+      popup.setAttribute('class', 'popup');
+      feedback.style.display = 'block';
+      feedback.style.color = 'red';
+      feedback.innerHTML = '<a href="scores.html">You lose! Your score is ' + score + '. <br />Click to see high scores.</a>';
     } //produce feedback
   }
   guessing = false;
