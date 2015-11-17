@@ -69,9 +69,12 @@ function shuffle (i) {
    setTimeout(function () {
       console.log(i);
       pickRandomShuffle();
-      if (--i) shuffle(i);
+      if (--i) {
+        shuffle(i);
+      } else {
+        guessing = true;
+      }
    }, 1000)
-   guessing = true;
 };
 
 function assignRightAnswer() {
