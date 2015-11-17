@@ -5,6 +5,9 @@ var feedback = document.getElementById('feedback');
 var funcArray = [animateFirstToThird, animateSecondToOne, animateSecondToThird];
 var options = [];
 var guessing = false;
+var speed;
+var classTime;
+var shuffles;
 var score;
 
 function getOptions() {
@@ -14,11 +17,20 @@ function getOptions() {
     var pair = vars[i].split("=");
     options[i] = pair[1]
   }
-} getOptions();
+}
 
 function parseOptions(options) {
-  //translate options[0] to milliseconds
-  //set # of shuffles to options[1]
+  if (options[0] === "Slow") {
+    speed = 1500;
+  } else if (options[0] === "Medium") {
+    speed = 1000;
+  } else {
+    speed = 500;
+  };
+  classTime = speed - 20;
+  shuffles = parseInt(options[1]);
+  console.log('sp=' + speed + '; classtime=' + classTime + '; sh=' + shuffles);
+  return speed, shuffles;
 }
 
 
@@ -30,7 +42,7 @@ function animateFirstToThird(childOfSpotOne, childOfSpotThree) {
     childOfSpotThree.setAttribute('class', null);
     spotOne.children[0].appendChild(childOfSpotThree);
     spotThree.children[0].appendChild(childOfSpotOne);
-  }, 980)
+  }, classTime)
 }
 
 function animateSecondToOne(childOfSpotOne, childOfSpotTwo) {
@@ -41,7 +53,7 @@ function animateSecondToOne(childOfSpotOne, childOfSpotTwo) {
     childOfSpotOne.setAttribute('class', null);
     spotOne.children[0].appendChild(childOfSpotTwo);
     spotTwo.children[0].appendChild(childOfSpotOne);
-  }, 980)
+  }, classTime)
 }
 
 function animateSecondToThird(childOfSpotTwo, childOfSpotThree) {
@@ -52,7 +64,7 @@ function animateSecondToThird(childOfSpotTwo, childOfSpotThree) {
     childOfSpotThree.setAttribute('class', null);
     spotTwo.children[0].appendChild(childOfSpotThree);
     spotThree.children[0].appendChild(childOfSpotTwo);
-  }, 980)
+  }, classTime)
 }
 
 function pickRandomShuffle() {
@@ -66,16 +78,16 @@ function pickRandomShuffle() {
   }
 }
 
-function shuffle (i) {
+function shuffle (s, i) {
    setTimeout(function () {
       console.log(i);
       pickRandomShuffle();
       if (--i) {
-        shuffle(i);
+        shuffle(speed, i);
       } else {
         guessing = true;
       }
-   }, 1000)
+   }, s)
 };
 
 function assignRightAnswer() {
@@ -94,8 +106,10 @@ function assignRightAnswer() {
 
 // console.log()
 function runGame() {
+  getOptions();
+  parseOptions(options);
   assignRightAnswer();
-  setTimeout(shuffle(10), 2000); //Argument is however many times you want to shuffle
+  setTimeout(shuffle(speed, shuffles), 2000); //Argument is however many times you want to shuffle
 }
 
 function spotOneClick () {
