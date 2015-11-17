@@ -111,10 +111,11 @@ div {
   display: none;
   text-align: center;
   text-decoration: none;
+  align-items: center;
+  justify-content: center;
 }
 
 #feedback a{
-  padding-top: 5%;
   text-decoration: none;
   font-size: 30px;
 }
@@ -126,10 +127,31 @@ div {
   width: 450px;
   position: fixed;
   top: 0%;
-  right: 44%;
-  left: 34.38%;
+  right: 0%;
+  left: 0%;
   z-index: 999;
   margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#position-pop {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.win {
+  display: flex;
+  color: green;
+}
+
+.lose {
+  display: flex;
+  color: red;
 }
 
 @keyframes popupFeedBack {
@@ -142,7 +164,7 @@ div {
         /*  color: gold;*/
           background-color: black;
           z-index: 200;
-          top: 50%;}
+          top: 35%;}
 }
 
 
