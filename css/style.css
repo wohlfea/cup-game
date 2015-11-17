@@ -1,0 +1,6 @@
+#pictures-row-one, #pictures-row-two {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
