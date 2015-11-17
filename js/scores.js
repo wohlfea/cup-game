@@ -19,7 +19,6 @@ function makeTable(){
 }
 
 function checkLocal() {
-  localStorage.setItem('scores', JSON.stringify([['AAA',3]]))
   if (localStorage.scores){
     scores = JSON.parse(localStorage.scores);
   }else {
