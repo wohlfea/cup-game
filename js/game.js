@@ -6,9 +6,12 @@ var funcArray = [animateFirstToThird, animateSecondToOne, animateSecondToThird];
 var options = [];
 var guessing = false;
 var speed;
+//var spFactor;
 var classTime;
 var shuffles;
+//var shFactor;
 var score;
+var highScores = [];
 
 function getOptions() {
   var query = window.location.search.substring(1);
@@ -22,13 +25,18 @@ function getOptions() {
 function parseOptions(options) {
   if (options[0] === "Slow") {
     speed = 1500;
+    //spFactor = 1.5;
   } else if (options[0] === "Medium") {
     speed = 1000;
+    //spFactor = 1;
   } else {
     speed = 500;
+    //spFactor = 0.5;
   };
   classTime = speed - 20;
   shuffles = parseInt(options[1]);
+  //shFactor = shuffles;
+  //score = spFactor * shFactor;
   console.log('sp=' + speed + '; classtime=' + classTime + '; sh=' + shuffles);
   return speed, shuffles;
 }
@@ -116,7 +124,10 @@ function spotOneClick () {
   if(guessing) {
     if(spotOne.children[0].children[0].id === 'winner'){
       feedback.style.display = 'block';
+      score = speed * shuffles;
+      isHighScore(score);
       feedback.innerHTML = '<p>You win! Your score is ' + score + '. <br />Click to see high scores.';
+      localStorage.setItem('allPictures', JSON.stringify(allPictures));
       } else {
         feedback.style.display = 'block';
         feedback.innerHTML = '<p>You lose! Your score is ' + score + '. <br />Click to see high scores.';
@@ -129,7 +140,9 @@ function spotTwoClick () {
   if(guessing) {
     if(spotTwo.children[0].children[0].id === 'winner'){
       feedback.style.display = 'block';
+      score = speed * shuffles;
       feedback.innerHTML = '<p>You win! Your score is ' + score + '. <br />Click to see high scores.';
+      isHighScore(score);
     } else {
       feedback.style.display = 'block';
       feedback.innerHTML = '<p>You lose! Your score is ' + score + '. <br />Click to see high scores.';
@@ -142,13 +155,30 @@ function spotThreeClick () {
   if(guessing) {
     if(spotThree.children[0].children[0].id === 'winner'){
       feedback.style.display = 'block';
+      score = speed * shuffles;
       feedback.innerHTML = '<p>You win! Your score is ' + score + '. <br />Click to see high scores.';
+      isHighScore(score);
     } else {
       feedback.style.display = 'block';
       feedback.innerHTML = '<p>You lose! Your score is ' + score + '. <br />Click to see high scores.';
     } //produce feedback
   }
   guessing = false;
+}
+
+function isHighScore (score) {
+  highScores = highScores.sort(function(a, b){return a-b});
+  for (var i = 0; i < highScores.length; i++) {
+    if (score > highScores[i]) {
+      highScores.splice(i+1, 0, score);
+    }
+  }
+
+  while (highScores.length > 10) {
+    highScores.shift();
+  }
+  localStorage.setItem('scores', JSON.stringify(highScores));
+  return highScores;
 }
 
 runGame();
