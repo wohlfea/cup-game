@@ -7,12 +7,41 @@ var funcArray = [animateFirstToThird, animateSecondToOne, animateSecondToThird];
 var options = [];
 var guessing = false;
 var speed;
-//var spFactor;
+var speedFactor;
 var classTime;
 var shuffles;
 //var shFactor;
-var score;
-var highScores = [];
+var score = 0;
+var highScores; /*= [
+  {
+    n:'AAA',
+    s: 4
+  },
+  {
+    n: 'ABB',
+    s: 3
+  },
+  {
+    n: 'BBB',
+    s: 5
+  },
+  {
+    n: 'CCC',
+    s: 6
+  },
+  {
+    n: 'DDD',
+    s: 1
+  }
+];*/
+
+function init() {
+  if (localStorage.scores){
+    highScores = JSON.parse(localStorage.scores);
+  } else {
+    highScores = [{n:'AAA',s: 4}, {n: 'ABB', s: 3}, {n: 'BBB', s: 5}, {n: 'CCC', s: 6}, {n: 'DDD', s: 1}];
+  }
+}
 
 function getOptions() {
   var query = window.location.search.substring(1);
@@ -21,25 +50,23 @@ function getOptions() {
     var pair = vars[i].split("=");
     options[i] = pair[1]
   }
-}
+} init();
 
 function parseOptions(options) {
   if (options[0] === "Slow") {
     speed = 1500;
-    //spFactor = 1.5;
+    speedFactor = 500;
   } else if (options[0] === "Medium") {
     speed = 1000;
-    //spFactor = 1;
+    speedFactor = 1000;
   } else {
     speed = 500;
-    //spFactor = 0.5;
+    speedFactor = 1500;
   };
   classTime = speed - 20;
   shuffles = parseInt(options[1]);
-  //shFactor = shuffles;
-  //score = spFactor * shFactor;
   console.log('sp=' + speed + '; classTime=' + classTime + '; sh=' + shuffles);
-  return speed, shuffles;
+  return speed, speedFactor, shuffles;
 }
 
 
@@ -138,13 +165,12 @@ function spotOneClick () {
   if(guessing) {
     reveal();
     if(spotOne.children[0].children[0].id === 'winner'){
-      score = speed * shuffles;
+      score = speedFactor * shuffles;
       isHighScore(score);
       popup.setAttribute('class', 'popup');
       feedback.style.display = 'flex';
       feedback.style.color = 'green';
       feedback.innerHTML = '<a href="scores.html" class="win">You win! Your score is ' + score + '. <br />Click to see high scores.</a>';
-      localStorage.setItem('allPictures', JSON.stringify(allPictures));
       } else {
         popup.setAttribute('class', 'popup');
         feedback.style.display = 'flex';
@@ -153,13 +179,14 @@ function spotOneClick () {
     } //produce feedback
   }
   guessing = false;
+  return score;
 }
 
 function spotTwoClick () {
   if(guessing) {
     reveal();
     if(spotTwo.children[0].children[0].id === 'winner'){
-      score = speed * shuffles;
+      score = speedFactor * shuffles;
       popup.setAttribute('class', 'popup');
       feedback.style.display = 'flex';
       feedback.style.color = 'green';
@@ -173,17 +200,18 @@ function spotTwoClick () {
     } //produce feedback
   }
   guessing = false;
+  return score;
 }
 
 function spotThreeClick () {
   if(guessing) {
     reveal();
     if(spotThree.children[0].children[0].id === 'winner'){
-      score = speed * shuffles;
+      score = speedFactor * shuffles;
       popup.setAttribute('class', 'popup');
       feedback.style.display = 'flex';
       feedback.style.color = 'green';
-      feedback.innerHTML = '<a href="scores.html" class="win">You win! Your score is ' + score + '. <br />Click to see high scores.</a>';      isHighScore(score);
+      feedback.innerHTML = '<a href="scores.html" class="win">You win! Your score is ' + score + '. <br />Click to see high scores.</a>';
       isHighScore(score);
     } else {
       popup.setAttribute('class', 'popup');
@@ -193,15 +221,26 @@ function spotThreeClick () {
     } //produce feedback
   }
   guessing = false;
+  return score;
 }
 
 function isHighScore (score) {
-  highScores = highScores.sort(function(a, b){return a-b});
+  var curScore = {n: 'zzz', s: score};
+
+  highScores = highScores.sort(function(a, b) {
+    return a.s-b.s;
+  });
+
   for (var i = 0; i < highScores.length; i++) {
-    if (score > highScores[i]) {
-      highScores.splice(i+1, 0, score);
+    if (score > highScores[i].s) {
+      highScores.splice(i+1, 0, curScore);
+      break;
     }
   }
+
+  highScores = highScores.sort(function(a, b) {
+    return a.s-b.s;
+  });
 
   while (highScores.length > 10) {
     highScores.shift();
