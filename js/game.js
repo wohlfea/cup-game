@@ -2,6 +2,7 @@ var spotOne = document.getElementById('spotOne');
 var spotTwo = document.getElementById('spotTwo');
 var spotThree = document.getElementById('spotThree');
 var feedback = document.getElementById('feedback');
+var popup = document.getElementById('popup');
 var funcArray = [animateFirstToThird, animateSecondToOne, animateSecondToThird];
 var options = [];
 var guessing = false;
@@ -95,17 +96,21 @@ function assignRightAnswer() {
 // console.log()
 function runGame() {
   assignRightAnswer();
-  setTimeout(shuffle(10), 2000); //Argument is however many times you want to shuffle
+  setTimeout(shuffle(3), 2000); //Argument is however many times you want to shuffle
 }
 
 function spotOneClick () {
   if(guessing) {
     if(spotOne.children[0].children[0].id === 'winner'){
+      popup.setAttribute('class', 'popup');
       feedback.style.display = 'block';
-      feedback.innerHTML = '<p>You win! Your score is ' + score + '. <br />Click to see high scores.';
+      feedback.style.color = 'green';
+      feedback.innerHTML = '<a href="scores.html">You win! Your score is ' + score + '. <br />Click to see high scores.</a>';
       } else {
+        popup.setAttribute('class', 'popup');
         feedback.style.display = 'block';
-        feedback.innerHTML = '<p>You lose! Your score is ' + score + '. <br />Click to see high scores.';
+        feedback.style.color = 'red';
+        feedback.innerHTML = '<a href="scores.html">You lose! Your score is ' + score + '. <br />Click to see high scores.</a>';
     } //produce feedback
   }
   guessing = false;
@@ -114,11 +119,15 @@ function spotOneClick () {
 function spotTwoClick () {
   if(guessing) {
     if(spotTwo.children[0].children[0].id === 'winner'){
+      popup.setAttribute('class', 'popup');
       feedback.style.display = 'block';
-      feedback.innerHTML = '<p>You win! Your score is ' + score + '. <br />Click to see high scores.';
+      feedback.style.color = 'green';
+      feedback.innerHTML = '<a href="scores.html">You win! Your score is ' + score + '. <br />Click to see high scores.</a>';
     } else {
+      popup.setAttribute('class', 'popup');
       feedback.style.display = 'block';
-      feedback.innerHTML = '<p>You lose! Your score is ' + score + '. <br />Click to see high scores.';
+      feedback.style.color = 'red';
+      feedback.innerHTML = '<a href="scores.html">You lose! Your score is ' + score + '. <br />Click to see high scores.</a>';
     } //produce feedback
   }
   guessing = false;
@@ -127,11 +136,14 @@ function spotTwoClick () {
 function spotThreeClick () {
   if(guessing) {
     if(spotThree.children[0].children[0].id === 'winner'){
+      popup.setAttribute('class', 'popup');
       feedback.style.display = 'block';
-      feedback.innerHTML = '<p>You win! Your score is ' + score + '. <br />Click to see high scores.';
-    } else {
+      feedback.style.color = 'green';
+      feedback.innerHTML = '<a href="scores.html">You win! Your score is ' + score + '. <br />Click to see high scores.</a>';
+      popup.setAttribute('class', 'popup');
       feedback.style.display = 'block';
-      feedback.innerHTML = '<p>You lose! Your score is ' + score + '. <br />Click to see high scores.';
+      feedback.style.color = 'red';
+      feedback.innerHTML = '<a href="scores.html">You lose! Your score is ' + score + '. <br />Click to see high scores.</a>';
     } //produce feedback
   }
   guessing = false;
