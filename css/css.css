@@ -9,24 +9,6 @@ div {
   margin-top: 300px;
   position: relative;
 }
-.oneToThree {
-  animation: oneToThrees 1s;
-}
-.threeToOne {
-  animation: threeToOnes 1s;
-}
-.oneToTwo {
-  animation: oneToTwos 1s;
-}
-.twoToOne {
-  animation: twoToOnes 1s;
-}
-.twoToThree {
-  animation: twoToThrees 1s;
-}
-.threeToTwo {
-  animation: threeToTwos 1s;
-}
 
 .highlight {
   animation: highlightAnswer 1s;
