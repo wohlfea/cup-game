@@ -102,18 +102,30 @@ function shuffle (s, i) {
 function assignRightAnswer() {
   var randomNumber = Math.floor(Math.random()*3);
   if (randomNumber === 0 ){
-    spotOne.children[0].setAttribute('class', 'highlight');
     spotOne.children[0].children[0].setAttribute('id', 'winner');
+    spotOne.children[0].children[0].children[0].src = 'images/slash/owlslash250.png';
+    setTimeout(function(){
+    spotOne.children[0].children[0].children[0].src = 'images/slash/slash250.png'
+    },1000);
   }else if(randomNumber === 1){
-    spotTwo.children[0].setAttribute('class', 'highlight');
     spotTwo.children[0].children[0].setAttribute('id', 'winner');
+    spotTwo.children[0].children[0].children[0].src = 'images/slash/owlslash250.png'
+    setTimeout(function(){
+    spotTwo.children[0].children[0].children[0].src = 'images/slash/slash250.png'
+    },1000);
   }else if(randomNumber === 2){
-    spotThree.children[0].setAttribute('class', 'highlight');
     spotThree.children[0].children[0].setAttribute('id', 'winner');
+    spotThree.children[0].children[0].children[0].src = 'images/slash/owlslash250.png'
+    setTimeout(function(){
+    spotThree.children[0].children[0].children[0].src = 'images/slash/slash250.png'
+    },1000);
   }
 }
+function reveal() {
+  winnerReveal = document.getElementById('winner');
+  winnerReveal.children[0].src = 'images/slash/owlslash250.png';
+}
 
-// console.log()
 function runGame() {
   getOptions();
   parseOptions(options);
@@ -124,6 +136,7 @@ function runGame() {
 
 function spotOneClick () {
   if(guessing) {
+    reveal();
     if(spotOne.children[0].children[0].id === 'winner'){
       score = speed * shuffles;
       isHighScore(score);
@@ -144,6 +157,7 @@ function spotOneClick () {
 
 function spotTwoClick () {
   if(guessing) {
+    reveal();
     if(spotTwo.children[0].children[0].id === 'winner'){
       score = speed * shuffles;
       popup.setAttribute('class', 'popup');
@@ -163,6 +177,7 @@ function spotTwoClick () {
 
 function spotThreeClick () {
   if(guessing) {
+    reveal();
     if(spotThree.children[0].children[0].id === 'winner'){
       score = speed * shuffles;
       popup.setAttribute('class', 'popup');
@@ -195,10 +210,10 @@ function isHighScore (score) {
   return highScores;
 }
 
-runGame();
-// shuffle(5);
+setTimeout(function(){
+  runGame();
+}, 500);
 
 spotOne.addEventListener('click', spotOneClick);
 spotTwo.addEventListener('click', spotTwoClick);
 spotThree.addEventListener('click', spotThreeClick);
-//feedback.addEventListener('click', giveFeedback);
