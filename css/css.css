@@ -10,29 +10,32 @@ div {
 }
 .oneToThree {
   animation: oneToThrees 1s;
-  transform-origin: 100% 50%;
 }
 .threeToOne {
   animation: threeToOnes 1s;
-  transform-origin: 100% 50%;
 }
 .oneToTwo {
   animation: oneToTwos 1s;
-  transform-origin: 100% 50%;
 }
 .twoToOne {
   animation: twoToOnes 1s;
-  transform-origin: 100% 50%;
 }
 .twoToThree {
   animation: twoToThrees 1s;
-  transform-origin: 100% 50%;
 }
 .threeToTwo {
   animation: threeToTwos 1s;
-  transform-origin: 100% 50%;
 }
 
+.highlight {
+  animation: highlightAnswer 1s;
+}
+
+@keyframes highlightAnswer {
+    0%   {background-color: gold;}
+    50%  {background-color: gold;}
+    100% {background-color: gold;}
+}
 
 @keyframes oneToThrees {
     0%   {bottom: 0px;
@@ -95,4 +98,13 @@ div {
 }
 #yellow {
   background-color: yellow;
+}
+
+.highlight:hover {
+  border: 2px;
+  border-color: green;
+}
+
+#feedback {
+  display: none;
 }
