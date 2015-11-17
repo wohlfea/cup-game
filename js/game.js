@@ -1,10 +1,11 @@
 var spotOne = document.getElementById('spotOne');
 var spotTwo = document.getElementById('spotTwo');
 var spotThree = document.getElementById('spotThree');
+var feedback = document.getElementById('feedback');
 var funcArray = [animateFirstToThird, animateSecondToOne, animateSecondToThird];
 var options = [];
 var guessing = false;
-
+var score;
 
 function getOptions() {
   var query = window.location.search.substring(1);
@@ -100,9 +101,11 @@ function runGame() {
 function spotOneClick () {
   if(guessing) {
     if(spotOne.children[0].children[0].id === 'winner'){
-      alert('You Win!');
-    } else {
-      alert('You Lose!');
+      feedback.style.display = 'block';
+      feedback.innerHTML = '<p>You win! Your score is ' + score + '. <br />Click to see high scores.';
+      } else {
+        feedback.style.display = 'block';
+        feedback.innerHTML = '<p>You lose! Your score is ' + score + '. <br />Click to see high scores.';
     } //produce feedback
   }
   guessing = false;
@@ -111,9 +114,11 @@ function spotOneClick () {
 function spotTwoClick () {
   if(guessing) {
     if(spotTwo.children[0].children[0].id === 'winner'){
-      alert('You Win!');
+      feedback.style.display = 'block';
+      feedback.innerHTML = '<p>You win! Your score is ' + score + '. <br />Click to see high scores.';
     } else {
-      alert('You Lose!');
+      feedback.style.display = 'block';
+      feedback.innerHTML = '<p>You lose! Your score is ' + score + '. <br />Click to see high scores.';
     } //produce feedback
   }
   guessing = false;
@@ -122,9 +127,11 @@ function spotTwoClick () {
 function spotThreeClick () {
   if(guessing) {
     if(spotThree.children[0].children[0].id === 'winner'){
-      alert('You Win!');
+      feedback.style.display = 'block';
+      feedback.innerHTML = '<p>You win! Your score is ' + score + '. <br />Click to see high scores.';
     } else {
-      alert('You Lose!');
+      feedback.style.display = 'block';
+      feedback.innerHTML = '<p>You lose! Your score is ' + score + '. <br />Click to see high scores.';
     } //produce feedback
   }
   guessing = false;
@@ -136,31 +143,4 @@ runGame();
 spotOne.addEventListener('click', spotOneClick);
 spotTwo.addEventListener('click', spotTwoClick);
 spotThree.addEventListener('click', spotThreeClick);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//feedback.addEventListener('click', giveFeedback);
