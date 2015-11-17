@@ -3,4 +3,11 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  text-align: center;
+}
+.about-caption {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  width: 350px;
+  text-align: justify;
 }
