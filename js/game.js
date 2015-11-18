@@ -18,7 +18,7 @@ function init() {
   if (localStorage.scores){
     highScores = JSON.parse(localStorage.scores);
   } else {
-    highScores = [{n:'AAA',s: 4}, {n: 'ABB', s: 3}, {n: 'BBB', s: 5}, {n: 'CCC', s: 6}, {n: 'DDD', s: 1}];
+    highScores = [{n:'AAA',s: 1000}, {n: 'ABB', s: 1500}, {n: 'BBB', s: 2000}, {n: 'CCC', s: 2500}, {n: 'DDD', s: 3000}];
   }
 }
 
@@ -32,18 +32,18 @@ function getOptions() {
 }
 
 function parseOptions(options) {
-  if (options[0] === "Slow") {
-    speed = 1500;
+  if (options[1] === "Slow") {
+    speed = 450;
     speedFactor = 500;
-  } else if (options[0] === "Medium") {
-    speed = 1000;
+  } else if (options[1] === "Medium") {
+    speed = 350;
     speedFactor = 1000;
   } else {
-    speed = 500;
+    speed = 250;
     speedFactor = 1500;
   };
   classTime = speed - 20;
-  shuffles = parseInt(options[1]);
+  shuffles = parseInt(options[0]);
   console.log('sp=' + speed + '; classTime=' + classTime + '; sh=' + shuffles);
   return speed, speedFactor, shuffles;
 }
