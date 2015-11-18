@@ -11,12 +11,26 @@
   width: 350px;
   text-align: justify;
 }
+*{
+  font-family: 'Press Start 2P', cursive;
+}
+body{
+background: url("../images/2.jpg") no-repeat center center fixed;
+background-size: cover;
+}
+#tableWrap {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  /*flex-direction:column;*/
+}
 
 table {
-  width: 100%;
+  margin-left: 400px
+  margin-right: 400px;
   border-collapse: collapse;
 }
-/* Zebra striping */
+
 tr:nth-of-type(even) {
   background: #eee;
 }
@@ -38,6 +52,24 @@ text-align: center;
 #wrap {
   margin-top: 20px;
   text-align: center;
+}
+header{
+ padding: 10px;
+ margin-top: 50px;
+ margin-left: 300px;
+ margin-right: 300px;
+ background: #003459;
+ font-size: 21px;
+ font-weight: bold;
+ line-height: 1.3em;
+ border: 2px solid #fff;
+ border-radius: 10px;
+ box-shadow: 0 0 0 4px #003459, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+ font-weight: normal;
+}
+
+a{
+  color: white;
 }
 
 
