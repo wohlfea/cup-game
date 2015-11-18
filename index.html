@@ -18,23 +18,30 @@
   <section id="main">
     <h2>Options</h2>
     <form id="options" action="game.html" method="get">
-      <label for="speed">Speed</label>
-      <select name="speed">
-        <option value="Slow">Slow</option>
-        <option value="Medium">Medium</option>
-        <option value="Fast">Fast</option>
-      </select>
-      <label for="shuffles">Number of Shuffles</label>
-      <select name="shuffles">
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <option value="20">20</option>
-        <option value="25">25</option>
-        <option value="30">30</option>
-      </select>
-      <button id="start" type="submit">Start</button>
+      <section id='optrow'>
+          <label for="speed">Speed: </label>
+          <select name="speed">
+            <option value="Slow">Slow</option>
+            <option value="Medium">Medium</option>
+            <option value="Fast">Fast</option>
+          </select>
+        </section>
+        <section id='optrow'>
+          <label for="shuffles">Number of Shuffles: </label>
+          <select name="shuffles">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+          </select>
+        </section>
+      <section id='buttonrow'>
+        <button id="start" type="submit">Start</button>
+      </section>
     </form>
+    </section>
   </section>
   <script type="text/javascript" src="js/options.js"></script>
 </section>
