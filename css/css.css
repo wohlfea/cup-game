@@ -90,29 +90,37 @@ div {
 
 #feedback {
   padding: 2%;
-  display: none;
+  display: flex;
   text-align: center;
   text-decoration: none;
   align-items: center;
   justify-content: center;
 }
 
-#feedback a {
- /* text-decoration: none;
-  font-size: 30px;
-  color: red;*/
-}
-
 .win {
   text-decoration: none;
-  font-size: 30px;
+  font-size: 20px;
+  line-height: 150%;
   color: green;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .lose {
   text-decoration: none;
-  font-size: 30px;
+  font-size: 20px;
+  line-height: 150%;
   color: red;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.lose:hover {
+  text-decoration: none;
+  color: gold;
+}
+
+.win:hover {
+  text-decoration: none;
+  color: gold;
 }
 
 .popup {
@@ -120,6 +128,9 @@ div {
   animation-fill-mode: forwards;
   height: 300px;
   width: 450px;
+  background-color: black;
+  border: 5px groove blue;
+  border-radius: 25px;
   position: fixed;
   top: 0%;
   right: 0%;
@@ -127,8 +138,6 @@ div {
   z-index: 999;
   margin: auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 #position-pop {
@@ -142,12 +151,9 @@ div {
 @keyframes popupFeedBack {
     0%   {visibility: hidden;
           opacity: 0;
-          background-color: black;
           z-index: -1;}
     100% {visibility: visible;
           opacity: 1;
-        /*  color: gold;*/
-          background-color: black;
           z-index: 200;
           top: 35%;}
 }
