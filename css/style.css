@@ -3,14 +3,23 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  text-align: center;
+  text-align: -webkit-center;
 }
 .about-caption {
+  font-family: 'Kreon', serif;
+  font-weight: 700;
+  font-size: 18px;
   margin-top: 20px;
   margin-bottom: 50px;
   width: 350px;
   text-align: justify;
 }
+#navabout {
+  display: flex;
+  text-align: -webkit-center;
+  padding: 1%;
+}
+
 *{
   font-family: 'Press Start 2P', cursive;
 }
