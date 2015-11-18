@@ -10,6 +10,9 @@ div {
   margin-top: 300px;
   position: relative;
 }
+h1{
+  color: white;
+}
 
 #instructions {
   position: fixed;
