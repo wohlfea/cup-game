@@ -1,6 +1,6 @@
-// var spotOne = document.getElementById('spotOne');
-// var spotTwo = document.getElementById('spotTwo');
-// var spotThree = document.getElementById('spotThree');
+var spotOne = document.getElementById('spotOne');
+var spotTwo = document.getElementById('spotTwo');
+var spotThree = document.getElementById('spotThree');
 var feedback = document.getElementById('feedback');
 var popup = document.getElementById('popup');
 var funcArray = [animateFirstToThird, animateSecondToOne, animateSecondToThird];
@@ -14,20 +14,17 @@ var shuffles;
 var score = 0;
 var highScores;
 var allSpots = [];
-var allImgs = [];
 
-function Spot(i) {
-  this.poo = document.getElementById(i);
-  this.spotSect = this.poo.children[0];
-  this.subDiv = this.poo.children[0].children[0];
-  this.pic = this.poo.children[0].children[0].children[0];
+function Spot(num) {
+  this.spotSect = num.children[0];
+  this.subDiv = num.children[0].children[0];
+  this.pic = num.children[0].children[0].children[0];
   allSpots.push(this);
-  allImgs.push(this.pic);
 }
 
-var spotOne = new Spot('spotOne');
-var spotTwo = new Spot('spotTwo');
-var spotThree = new Spot('spotThree');
+var spotOne = new Spot(spotOne);
+var spotTwo = new Spot(spotTwo);
+var spotThree = new Spot(spotThree);
 
 function init() {
   if (localStorage.scores){
@@ -43,7 +40,7 @@ function getOptions() {
   for (var i=0; i<vars.length; i++) {
     var pair = vars[i].split("=");
     options[i] = pair[1]
-  }
+  };
 }
 
 function parseOptions(options) {
@@ -69,8 +66,8 @@ function animateFirstToThird(childOfSpotOne, childOfSpotThree) {
   setTimeout(function(){
     childOfSpotOne.style.animation = null;
     childOfSpotThree.style.animation = null;
-    allSpots[0].spotSect.appendChild(childOfSpotThree);
-    allSpots[2].spotSect.appendChild(childOfSpotOne);
+    spotOne.children[0].appendChild(childOfSpotThree);
+    spotThree.children[0].appendChild(childOfSpotOne);
   }, classTime)
 }
 
@@ -80,8 +77,8 @@ function animateSecondToOne(childOfSpotOne, childOfSpotTwo) {
   setTimeout(function(){
     childOfSpotTwo.style.animation = null;
     childOfSpotOne.style.animation = null;
-    allSpots[0].spotSect.appendChild(childOfSpotTwo);
-    allSpots[1].spotSect.appendChild(childOfSpotOne);
+    spotOne.children[0].appendChild(childOfSpotTwo);
+    spotTwo.children[0].appendChild(childOfSpotOne);
   }, classTime)
 }
 
@@ -91,19 +88,29 @@ function animateSecondToThird(childOfSpotTwo, childOfSpotThree) {
   setTimeout(function(){
     childOfSpotTwo.style.animation = null;
     childOfSpotThree.style.animation = null;
-    allSpots[1].spotSect.appendChild(childOfSpotThree);
-    allSpots[2].spotSect.appendChild(childOfSpotTwo);
+    spotTwo.children[0].appendChild(childOfSpotThree);
+    spotThree.children[0].appendChild(childOfSpotTwo);
   }, classTime)
 }
 
 function pickRandomShuffle() {
   var randomNumber = Math.floor(Math.random()*funcArray.length);
+  var one = allSpots[0].subDiv;
+  var two = allSpots[1].subDiv;
+  var three = allSpots[2].subDiv;
+
   if (randomNumber === 0) {
-    funcArray[0](allSpots[0].subDiv, allSpots[2].subDiv);
+    funcArray[0](one, three);
+    console.log('one:'+one);
+    console.log('three:'+three);
   } else if (randomNumber === 1) {
-    funcArray[1](allSpots[0].subDiv, allSpots[1].subDiv);
+    funcArray[1](one, two);
+    console.log('one:'+one);
+    console.log('two'+two);
   } else if (randomNumber === 2) {
-    funcArray[2](allSpots[1].subDiv, allSpots[2].subDiv);
+    funcArray[2](two, three);
+    console.log('two'+two);
+    console.log('three:'+three);
   }
 }
 
@@ -244,6 +251,6 @@ setTimeout(function(){
   runGame();
 }, 500);
 
-allSpots[0].poo.addEventListener('click', spotOneClick);
-allSpots[1].poo.addEventListener('click', spotTwoClick);
-allSpots[2].poo.addEventListener('click', spotThreeClick);
+spotOne.addEventListener('click', spotOneClick);
+spotTwo.addEventListener('click', spotTwoClick);
+spotThree.addEventListener('click', spotThreeClick);
