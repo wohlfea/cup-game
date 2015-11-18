@@ -15,7 +15,7 @@ div {
   position: fixed;
   font-family: 'Press Start 2P', cursive;
   font-weight: bold;
-  color: black;
+  color: white;
   line-height: 1.3em;
   border-radius: 10px;
   border: 2px solid #fff;
@@ -101,6 +101,17 @@ div {
   text-decoration: none;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+#feedback #username {
+  width: 100px;
+  height: 20px;
+}
+
+#feedback #submitun {
+  width: 80px;
+  height: 20px;
 }
 
 .win {

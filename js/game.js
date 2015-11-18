@@ -147,7 +147,7 @@ function spotOneClick () {
       score = speedFactor * shuffles;
       isHighScore(score);
       popup.setAttribute('class', 'popup');
-      feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+      feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a> <br /> <input id = "username" type="text" name="player"> <br /> <input id = "submitun" type ="submit" value="submit">';
       } else {
         popup.setAttribute('class', 'popup');
         feedback.innerHTML = '<a href="scores.html" class="lose">You lose! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
@@ -163,7 +163,7 @@ function spotTwoClick () {
     if(spotTwo.children[0].children[0].id === 'winner'){
       score = speedFactor * shuffles;
       popup.setAttribute('class', 'popup');
-      feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+      feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a> <br /> <input id = "username" type="text" name="player"> <br /> <input id = "submitun" type ="submit" value="submit">';
       isHighScore(score);
     } else {
       popup.setAttribute('class', 'popup');
@@ -180,7 +180,7 @@ function spotThreeClick () {
     if(spotThree.children[0].children[0].id === 'winner'){
       score = speedFactor * shuffles;
       popup.setAttribute('class', 'popup');
-      feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+      feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a> <br /> <input id = "username" type="text" name="player"> <br /> <input id = "submitun" type ="submit" value="submit">';
       isHighScore(score);
     } else {
       popup.setAttribute('class', 'popup');
