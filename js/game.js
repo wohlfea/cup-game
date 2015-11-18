@@ -1,6 +1,6 @@
-var spotOne = document.getElementById('spotOne');
-var spotTwo = document.getElementById('spotTwo');
-var spotThree = document.getElementById('spotThree');
+// var spotOne = document.getElementById('spotOne');
+// var spotTwo = document.getElementById('spotTwo');
+// var spotThree = document.getElementById('spotThree');
 var feedback = document.getElementById('feedback');
 var popup = document.getElementById('popup');
 var funcArray = [animateFirstToThird, animateSecondToOne, animateSecondToThird];
@@ -13,6 +13,21 @@ var shuffles;
 //var shFactor;
 var score = 0;
 var highScores;
+var allSpots = [];
+var allImgs = [];
+
+function Spot(i) {
+  this.poo = document.getElementById(i);
+  this.spotSect = this.poo.children[0];
+  this.subDiv = this.poo.children[0].children[0];
+  this.pic = this.poo.children[0].children[0].children[0];
+  allSpots.push(this);
+  allImgs.push(this.pic);
+}
+
+var spotOne = new Spot('spotOne');
+var spotTwo = new Spot('spotTwo');
+var spotThree = new Spot('spotThree');
 
 function init() {
   if (localStorage.scores){
@@ -44,7 +59,6 @@ function parseOptions(options) {
   };
   classTime = speed - 20;
   shuffles = parseInt(options[1]);
-  console.log('sp=' + speed + '; classTime=' + classTime + '; sh=' + shuffles);
   return speed, speedFactor, shuffles;
 }
 
@@ -55,8 +69,8 @@ function animateFirstToThird(childOfSpotOne, childOfSpotThree) {
   setTimeout(function(){
     childOfSpotOne.style.animation = null;
     childOfSpotThree.style.animation = null;
-    spotOne.children[0].appendChild(childOfSpotThree);
-    spotThree.children[0].appendChild(childOfSpotOne);
+    allSpots[0].spotSect.appendChild(childOfSpotThree);
+    allSpots[2].spotSect.appendChild(childOfSpotOne);
   }, classTime)
 }
 
@@ -66,8 +80,8 @@ function animateSecondToOne(childOfSpotOne, childOfSpotTwo) {
   setTimeout(function(){
     childOfSpotTwo.style.animation = null;
     childOfSpotOne.style.animation = null;
-    spotOne.children[0].appendChild(childOfSpotTwo);
-    spotTwo.children[0].appendChild(childOfSpotOne);
+    allSpots[0].spotSect.appendChild(childOfSpotTwo);
+    allSpots[1].spotSect.appendChild(childOfSpotOne);
   }, classTime)
 }
 
@@ -77,25 +91,24 @@ function animateSecondToThird(childOfSpotTwo, childOfSpotThree) {
   setTimeout(function(){
     childOfSpotTwo.style.animation = null;
     childOfSpotThree.style.animation = null;
-    spotTwo.children[0].appendChild(childOfSpotThree);
-    spotThree.children[0].appendChild(childOfSpotTwo);
+    allSpots[1].spotSect.appendChild(childOfSpotThree);
+    allSpots[2].spotSect.appendChild(childOfSpotTwo);
   }, classTime)
 }
 
 function pickRandomShuffle() {
   var randomNumber = Math.floor(Math.random()*funcArray.length);
   if (randomNumber === 0) {
-    funcArray[0](spotOne.children[0].children[0], spotThree.children[0].children[0]);
+    funcArray[0](allSpots[0].subDiv, allSpots[2].subDiv);
   } else if (randomNumber === 1) {
-    funcArray[1](spotOne.children[0].children[0], spotTwo.children[0].children[0]);
+    funcArray[1](allSpots[0].subDiv, allSpots[1].subDiv);
   } else if (randomNumber === 2) {
-    funcArray[2](spotTwo.children[0].children[0], spotThree.children[0].children[0]);
+    funcArray[2](allSpots[1].subDiv, allSpots[2].subDiv);
   }
 }
 
 function shuffle (s, i) {
    setTimeout(function () {
-      console.log(i);
       pickRandomShuffle();
       if (--i) {
         shuffle(speed, i);
@@ -103,9 +116,18 @@ function shuffle (s, i) {
         guessing = true;
       }
    }, s)
-};
+}
 
 function assignRightAnswer() {
+  var randomNumber = Math.floor(Math.random()*3);
+  allSpots[randomNumber].subDiv.setAttribute('id', 'winner');
+  allSpots[randomNumber].pic.src = 'images/slash/owlslash250.png';
+  setTimeout(function(){
+    allSpots[randomNumber].pic.src = 'images/slash/slash250.png';
+  },1000);
+}
+
+/*function assignRightAnswer() {
   var randomNumber = Math.floor(Math.random()*3);
   if (randomNumber === 0 ){
     spotOne.children[0].children[0].setAttribute('id', 'winner');
@@ -126,7 +148,8 @@ function assignRightAnswer() {
     spotThree.children[0].children[0].children[0].src = 'images/slash/slash250.png'
     },1000);
   }
-}
+}*/
+
 function reveal() {
   winnerReveal = document.getElementById('winner');
   winnerReveal.children[0].src = 'images/slash/owlslash250.png';
@@ -143,7 +166,7 @@ function runGame() {
 function spotOneClick () {
   if(guessing) {
     reveal();
-    if(spotOne.children[0].children[0].id === 'winner'){
+    if(allSpots[0].subDiv.id === 'winner'){
       score = speedFactor * shuffles;
       isHighScore(score);
       popup.setAttribute('class', 'popup');
@@ -151,7 +174,7 @@ function spotOneClick () {
       } else {
         popup.setAttribute('class', 'popup');
         feedback.innerHTML = '<a href="scores.html" class="lose">You lose! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
-    } //produce feedback
+    }
   }
   guessing = false;
   return score;
@@ -160,7 +183,7 @@ function spotOneClick () {
 function spotTwoClick () {
   if(guessing) {
     reveal();
-    if(spotTwo.children[0].children[0].id === 'winner'){
+    if(allSpots[1].subDiv.id === 'winner'){
       score = speedFactor * shuffles;
       popup.setAttribute('class', 'popup');
       feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
@@ -168,7 +191,7 @@ function spotTwoClick () {
     } else {
       popup.setAttribute('class', 'popup');
       feedback.innerHTML = '<a href="scores.html" class="lose">You lose! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
-    } //produce feedback
+    }
   }
   guessing = false;
   return score;
@@ -177,7 +200,7 @@ function spotTwoClick () {
 function spotThreeClick () {
   if(guessing) {
     reveal();
-    if(spotThree.children[0].children[0].id === 'winner'){
+    if(allSpots[2].subDiv.id === 'winner'){
       score = speedFactor * shuffles;
       popup.setAttribute('class', 'popup');
       feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
@@ -185,7 +208,7 @@ function spotThreeClick () {
     } else {
       popup.setAttribute('class', 'popup');
       feedback.innerHTML = '<a href="scores.html" class="lose">You lose! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
-    } //produce feedback
+    }
   }
   guessing = false;
   return score;
@@ -221,6 +244,6 @@ setTimeout(function(){
   runGame();
 }, 500);
 
-spotOne.addEventListener('click', spotOneClick);
-spotTwo.addEventListener('click', spotTwoClick);
-spotThree.addEventListener('click', spotThreeClick);
+allSpots[0].poo.addEventListener('click', spotOneClick);
+allSpots[1].poo.addEventListener('click', spotTwoClick);
+allSpots[2].poo.addEventListener('click', spotThreeClick);
