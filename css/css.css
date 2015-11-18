@@ -11,6 +11,26 @@ div {
   position: relative;
 }
 
+#instructions {
+  position: fixed;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: bold;
+  color: black;
+  line-height: 1.3em;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  text-align: -webkit-center;
+  box-shadow: 0 0 0 4px #003459, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  top: 0%;
+  right: 0%;
+  left: 0%;
+  padding: 10px;
+  margin-top: 50px;
+  margin-left: 300px;
+  margin-right: 300px;
+  background: #003459;
+}
+
 .highlight {
   animation: highlightAnswer 1s;
 }
