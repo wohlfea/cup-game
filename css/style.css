@@ -76,11 +76,16 @@ header{
  box-shadow: 0 0 0 4px #003459, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
  font-weight: normal;
 }
+h1{
+  color: white;
+}
 
 a{
   color: white;
 }
-
+a:hover{
+  color: gold;
+}
 button{
   margin-top: 40px;
   background: #196c87;
