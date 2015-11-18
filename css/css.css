@@ -90,7 +90,7 @@ div {
 
 #feedback {
   padding: 2%;
-  display: none;
+  display: flex;
   text-align: center;
   text-decoration: none;
   align-items: center;
