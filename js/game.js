@@ -12,28 +12,7 @@ var classTime;
 var shuffles;
 //var shFactor;
 var score = 0;
-var highScores; /*= [
-  {
-    n:'AAA',
-    s: 4
-  },
-  {
-    n: 'ABB',
-    s: 3
-  },
-  {
-    n: 'BBB',
-    s: 5
-  },
-  {
-    n: 'CCC',
-    s: 6
-  },
-  {
-    n: 'DDD',
-    s: 1
-  }
-];*/
+var highScores;
 
 function init() {
   if (localStorage.scores){
@@ -50,7 +29,7 @@ function getOptions() {
     var pair = vars[i].split("=");
     options[i] = pair[1]
   }
-} init();
+}
 
 function parseOptions(options) {
   if (options[0] === "Slow") {
@@ -249,6 +228,7 @@ function isHighScore (score) {
   return highScores;
 }
 
+init();
 setTimeout(function(){
   runGame();
 }, 500);
