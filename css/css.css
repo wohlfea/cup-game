@@ -115,11 +115,24 @@ div {
   color: red;
 }
 
+.lose:hover {
+  text-decoration: none;
+  color: gold;
+}
+
+.win:hover {
+  text-decoration: none;
+  color: gold;
+}
+
 .popup {
   animation: popupFeedBack 1s;
   animation-fill-mode: forwards;
   height: 300px;
   width: 450px;
+  background-color: black;
+  border: 5px groove blue;
+  border-radius: 25px;
   position: fixed;
   top: 0%;
   right: 0%;
@@ -142,12 +155,9 @@ div {
 @keyframes popupFeedBack {
     0%   {visibility: hidden;
           opacity: 0;
-          background-color: black;
           z-index: -1;}
     100% {visibility: visible;
           opacity: 1;
-        /*  color: gold;*/
-          background-color: black;
           z-index: 200;
           top: 35%;}
 }
