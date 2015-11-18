@@ -81,10 +81,41 @@ a{
   color: white;
 }
 
+button{
+  background: #196c87;
+  background-image: -webkit-linear-gradient(top, #196c87, #00a8e8);
+  background-image: -moz-linear-gradient(top, #196c87, #00a8e8);
+  background-image: -ms-linear-gradient(top, #196c87, #00a8e8);
+  background-image: -o-linear-gradient(top, #196c87, #00a8e8);
+  background-image: linear-gradient(to bottom, #196c87, #00a8e8);
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  text-shadow: 3px 3px 2px #0d0d0d;
+  font-family: 'Press Start 2P', cursive;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  border: 2px solid black;
+  text-decoration: none;
+}
 
+button:hover {
+  background: #015773;
+  background-image: -webkit-linear-gradient(top, #015773, #6acef2);
+  background-image: -moz-linear-gradient(top, #015773, #6acef2);
+  background-image: -ms-linear-gradient(top, #015773, #6acef2);
+  background-image: -o-linear-gradient(top, #015773, #6acef2);
+  background-image: linear-gradient(to bottom, #015773, #6acef2);
+  text-decoration: none;
+}
 
-
-
+select {
+  -webkit-appearance: menulist-button;
+  border: 1px black;
+  width: 80px;
+  height: 30px;
+}
 
 
 
