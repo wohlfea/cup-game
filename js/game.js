@@ -33,10 +33,10 @@ function getOptions() {
 }
 
 function parseOptions(options) {
-  if (options[0] === "Slow") {
+  if (options[1] === "Slow") {
     speed = 450;
     speedFactor = 500;
-  } else if (options[0] === "Medium") {
+  } else if (options[1] === "Medium") {
     speed = 350;
     speedFactor = 1000;
   } else {
@@ -44,7 +44,7 @@ function parseOptions(options) {
     speedFactor = 2000;
   };
   classTime = speed - 20;
-  shuffles = parseInt(options[1]);
+  shuffles = parseInt(options[0]);
   console.log('sp=' + speed + '; classTime=' + classTime + '; sh=' + shuffles);
   return speed, speedFactor, shuffles;
 }
@@ -149,7 +149,7 @@ function spotOneClick () {
       isHighScore(score);
       if (isHighScore) {
         popup.setAttribute('class', 'popup');
-        feedback.innerHTML = '<p class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</p> <br /><form id="form"><input id="username" type="text" name="player"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
+        feedback.innerHTML = '<p class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</p> <br /><form id="form"><input id="username" type="text" name="player" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
         formListen();
       } else {
         popup.setAttribute('class', 'popup');
@@ -172,7 +172,7 @@ function spotTwoClick () {
       isHighScore(score);
       if (isHighScore) {
         popup.setAttribute('class', 'popup');
-        feedback.innerHTML = '<p class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</p> <br /><form id="form"><input id="username" type="text" name="player"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
+        feedback.innerHTML = '<p class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</p> <br /><form id="form"><input id="username" type="text" name="player" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
         formListen();
       } else {
         popup.setAttribute('class', 'popup');
@@ -195,7 +195,7 @@ function spotThreeClick () {
       isHighScore(score);
       if (isHighScore) {
         popup.setAttribute('class', 'popup');
-        feedback.innerHTML = '<p class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</p> <br /><form id="form"><input id="username" type="text" name="player"> <br /> <input id="submitun" type ="submit" value="submit"></form>';            form = document.getElementById('form');
+        feedback.innerHTML = '<p class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</p> <br /><form id="form"><input id="username" type="text" name="player" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';            form = document.getElementById('form');
         formListen();
       } else {
         popup.setAttribute('class', 'popup');
