@@ -18,7 +18,6 @@ function init() {
   } else {
     highScores = [{n:'AAA',s: 1000}, {n: 'ABB', s: 1200}, {n: 'BBB', s: 1400}, {n: 'CCC', s: 1600}, {n: 'DDD', s: 1800}];
   }
-  console.log(highScores);
 }
 
 var Shuffler = {
@@ -45,7 +44,6 @@ var Shuffler = {
     };
     classTime = speed - 20;
     shuffles = parseInt(options[0]);
-    console.log('sp=' + speed + '; classTime=' + classTime + '; sh=' + shuffles);
     return speed, speedFactor, shuffles;
   },
 
@@ -74,7 +72,6 @@ var Shuffler = {
 
   shuffle: function(s, i) {
      setTimeout(function () {
-        console.log(i);
         Shuffler.pickRandomShuffle();
         if (--i) {
           Shuffler.shuffle(speed, i);
@@ -89,7 +86,7 @@ var Shuffler = {
     this.parseOptions(options);
     this.assignRightAnswer();
     setTimeout(function() {
-      Shuffler.shuffle(speed, shuffles)}, 1000) //Argument is however many times you want to shuffle
+      Shuffler.shuffle(speed, shuffles)}, 1000)
   },
 
   pickRandomShuffle: function() {
@@ -221,10 +218,8 @@ var Responder = {
     }
 
     if (highScores.indexOf(curScore) > -1) {
-      console.log(highScores);
       return true;
     } else {
-      console.log(highScores);
       return false;
     }
   },
@@ -235,7 +230,6 @@ var Responder = {
       event.preventDefault();
 
       var n= event.target.username.value;
-      console.log(n);
       for (var i=0; i < highScores.length; i++) {
         if (highScores[i].n === '') {
           highScores[i].n = n.toUpperCase();
