@@ -133,7 +133,15 @@ h1{
   border: 2px solid black;
   text-decoration: none;
 }
-
+#feedback #submitun:hover {
+  background: #015773;
+  background-image: -webkit-linear-gradient(top, #015773, #6acef2);
+  background-image: -moz-linear-gradient(top, #015773, #6acef2);
+  background-image: -ms-linear-gradient(top, #015773, #6acef2);
+  background-image: -o-linear-gradient(top, #015773, #6acef2);
+  background-image: linear-gradient(to bottom, #015773, #6acef2);
+  text-decoration: none;
+}
 .win {
   text-decoration: none;
   font-size: 20px;
