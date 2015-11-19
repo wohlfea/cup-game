@@ -24,7 +24,7 @@ function checkLocal() {
   if (localStorage.scores){
     scores = JSON.parse(localStorage.scores);
   }else {
-    scores = [{n:'AAA',s: 4}, {n: 'ABB', s: 3}, {n: 'BBB', s: 5}, {n: 'CCC', s: 6}, {n: 'DDD', s: 1}];
+    highScores = [{n:'AAA',s: 1000}, {n: 'ABB', s: 1200}, {n: 'BBB', s: 1400}, {n: 'CCC', s: 1600}, {n: 'DDD', s: 1800}];
   }
 }
 
