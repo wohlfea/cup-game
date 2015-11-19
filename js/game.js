@@ -149,7 +149,7 @@ function spotOneClick () {
       isHighScore(score);
       if (isHighScore) {
         popup.setAttribute('class', 'popup');
-        feedback.innerHTML = '<p class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</p> <br /><form id="form"><input id="username" type="text" name="player" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
+        feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are your?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
         formListen();
       } else {
         popup.setAttribute('class', 'popup');
@@ -172,7 +172,7 @@ function spotTwoClick () {
       isHighScore(score);
       if (isHighScore) {
         popup.setAttribute('class', 'popup');
-        feedback.innerHTML = '<p class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</p> <br /><form id="form"><input id="username" type="text" name="player" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
+        feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are your?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
         formListen();
       } else {
         popup.setAttribute('class', 'popup');
@@ -195,7 +195,7 @@ function spotThreeClick () {
       isHighScore(score);
       if (isHighScore) {
         popup.setAttribute('class', 'popup');
-        feedback.innerHTML = '<p class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</p> <br /><form id="form"><input id="username" type="text" name="player" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';            form = document.getElementById('form');
+        feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are your?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
         formListen();
       } else {
         popup.setAttribute('class', 'popup');
