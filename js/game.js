@@ -49,22 +49,22 @@ var Shuffler = {
   assignRightAnswer: function() {
     var randomNumber = Math.floor(Math.random()*3);
     if (randomNumber === 0 ){
-      spotOne.children[0].children[0].setAttribute('id', 'winner');
-      spotOne.children[0].children[0].children[0].src = 'images/slash/owlslash250.png';
+      spotOne.children[0].setAttribute('id', 'winner');
+      spotOne.children[0].children[0].src = 'images/slash/owlslash250.png';
       setTimeout(function(){
-      spotOne.children[0].children[0].children[0].src = 'images/slash/slash250.png'
+      spotOne.children[0].children[0].src = 'images/slash/slash250.png'
       },1000);
     } else if(randomNumber === 1){
-      spotTwo.children[0].children[0].setAttribute('id', 'winner');
-      spotTwo.children[0].children[0].children[0].src = 'images/slash/owlslash250.png'
+      spotTwo.children[0].setAttribute('id', 'winner');
+      spotTwo.children[0].children[0].src = 'images/slash/owlslash250.png'
       setTimeout(function(){
-      spotTwo.children[0].children[0].children[0].src = 'images/slash/slash250.png'
+      spotTwo.children[0].children[0].src = 'images/slash/slash250.png'
       },1000);
     } else if(randomNumber === 2){
-      spotThree.children[0].children[0].setAttribute('id', 'winner');
-      spotThree.children[0].children[0].children[0].src = 'images/slash/owlslash250.png'
+      spotThree.children[0].setAttribute('id', 'winner');
+      spotThree.children[0].children[0].src = 'images/slash/owlslash250.png'
       setTimeout(function(){
-      spotThree.children[0].children[0].children[0].src = 'images/slash/slash250.png'
+      spotThree.children[0].children[0].src = 'images/slash/slash250.png'
       },1000);
     }
   },
@@ -91,11 +91,11 @@ var Shuffler = {
   pickRandomShuffle: function() {
     var randomNumber = Math.floor(Math.random()*3);
     if (randomNumber === 0) {
-      this.animateFirstToThird(spotOne.children[0].children[0], spotThree.children[0].children[0]);
+      this.animateFirstToThird(spotOne.children[0], spotThree.children[0]);
     } else if (randomNumber === 1) {
-      this.animateSecondToOne(spotOne.children[0].children[0], spotTwo.children[0].children[0]);
+      this.animateSecondToOne(spotOne.children[0], spotTwo.children[0]);
     } else if (randomNumber === 2) {
-      this.animateSecondToThird(spotTwo.children[0].children[0], spotThree.children[0].children[0]);
+      this.animateSecondToThird(spotTwo.children[0], spotThree.children[0]);
     }
   },
 
@@ -105,8 +105,8 @@ var Shuffler = {
     setTimeout(function(){
       childOfSpotOne.style.animation = null;
       childOfSpotThree.style.animation = null;
-      spotOne.children[0].appendChild(childOfSpotThree);
-      spotThree.children[0].appendChild(childOfSpotOne);
+      spotOne.appendChild(childOfSpotThree);
+      spotThree.appendChild(childOfSpotOne);
     }, this.classTime)
   },
 
@@ -116,8 +116,8 @@ var Shuffler = {
     setTimeout(function(){
       childOfSpotTwo.style.animation = null;
       childOfSpotOne.style.animation = null;
-      spotOne.children[0].appendChild(childOfSpotTwo);
-      spotTwo.children[0].appendChild(childOfSpotOne);
+      spotOne.appendChild(childOfSpotTwo);
+      spotTwo.appendChild(childOfSpotOne);
     }, this.classTime)
   },
 
@@ -127,8 +127,8 @@ var Shuffler = {
     setTimeout(function(){
       childOfSpotTwo.style.animation = null;
       childOfSpotThree.style.animation = null;
-      spotTwo.children[0].appendChild(childOfSpotThree);
-      spotThree.children[0].appendChild(childOfSpotTwo);
+      spotTwo.appendChild(childOfSpotThree);
+      spotThree.appendChild(childOfSpotTwo);
     }, this.classTime)
   }
 };
@@ -156,7 +156,7 @@ var Responder = {
   spotOneClick: function() {
     if(guessing) {
       Responder.reveal();
-      if(spotOne.children[0].children[0].id === 'winner'){
+      if(spotOne.children[0].id === 'winner'){
         score = speedFactor * shuffles;
         if (Responder.isHighScore(score)) {
           Responder.winHS();
@@ -174,7 +174,7 @@ var Responder = {
   spotTwoClick: function() {
     if(guessing) {
       Responder.reveal();
-      if(spotTwo.children[0].children[0].id === 'winner'){
+      if(spotTwo.children[0].id === 'winner'){
         score = speedFactor * shuffles;
         if (Responder.isHighScore(score)) {
           Responder.winHS();
@@ -192,7 +192,7 @@ var Responder = {
   spotThreeClick: function() {
     if(guessing) {
       Responder.reveal();
-      if(spotThree.children[0].children[0].id === 'winner'){
+      if(spotThree.children[0].id === 'winner'){
         score = speedFactor * shuffles;
         if (Responder.isHighScore(score)) {
           Responder.winHS();
@@ -209,7 +209,7 @@ var Responder = {
 
   reveal: function() {
     winnerReveal = document.getElementById('winner');
-    winnerReveal.children[0].src = 'images/slash/owlslash250.png';
+    winnerReveal.src = 'images/slash/owlslash250.png';
   },
 
   isHighScore: function(score) {
