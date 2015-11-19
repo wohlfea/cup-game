@@ -10,7 +10,6 @@ var speed;
 var speedFactor;
 var classTime;
 var shuffles;
-//var shFactor;
 var score = 0;
 var highScores;
 
@@ -146,10 +145,9 @@ function spotOneClick () {
     reveal();
     if(spotOne.children[0].children[0].id === 'winner'){
       score = speedFactor * shuffles;
-      isHighScore(score);
-      if (isHighScore) {
+      if (isHighScore(score)) {
         popup.setAttribute('class', 'popup');
-        feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are your?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
+        feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are you?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
         formListen();
       } else {
         popup.setAttribute('class', 'popup');
@@ -169,10 +167,9 @@ function spotTwoClick () {
     reveal();
     if(spotTwo.children[0].children[0].id === 'winner'){
       score = speedFactor * shuffles;
-      isHighScore(score);
-      if (isHighScore) {
+      if (isHighScore(score)) {
         popup.setAttribute('class', 'popup');
-        feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are your?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
+        feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are you?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
         formListen();
       } else {
         popup.setAttribute('class', 'popup');
@@ -192,10 +189,9 @@ function spotThreeClick () {
     reveal();
     if(spotThree.children[0].children[0].id === 'winner'){
       score = speedFactor * shuffles;
-      isHighScore(score);
-      if (isHighScore) {
+      if (isHighScore(score)) {
         popup.setAttribute('class', 'popup');
-        feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are your?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
+        feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are you?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
         formListen();
       } else {
         popup.setAttribute('class', 'popup');
@@ -221,12 +217,12 @@ function isHighScore (score) {
     highScores.shift();
   }
 
-  if (highScores.indexOf(score) > -1) {
+  if (highScores.indexOf(curScore) > -1) {
     console.log(highScores);
-    return true, highScores;
+    return true;
   } else {
     console.log(highScores);
-    return false, highScores;
+    return false;
   }
 }
 
