@@ -18,7 +18,7 @@ function init() {
   if (localStorage.scores){
     highScores = JSON.parse(localStorage.scores);
   } else {
-    highScores = [{n:'AAA',s: 4}, {n: 'ABB', s: 3}, {n: 'BBB', s: 5}, {n: 'CCC', s: 6}, {n: 'DDD', s: 1}];
+    highScores = [{n:'AAA',s: 1000}, {n: 'ABB', s: 1200}, {n: 'BBB', s: 1400}, {n: 'CCC', s: 1600}, {n: 'DDD', s: 1800}];
   }
   console.log(highScores);
 }
