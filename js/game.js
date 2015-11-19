@@ -3,6 +3,7 @@ var spotTwo = document.getElementById('spotTwo');
 var spotThree = document.getElementById('spotThree');
 var feedback = document.getElementById('feedback');
 var popup = document.getElementById('popup');
+var form = document.getElementById('form');
 var funcArray = [animateFirstToThird, animateSecondToOne, animateSecondToThird];
 var options = [];
 var guessing = false;
@@ -146,11 +147,16 @@ function spotOneClick () {
     if(spotOne.children[0].children[0].id === 'winner'){
       score = speedFactor * shuffles;
       isHighScore(score);
-      popup.setAttribute('class', 'popup');
-      feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a> <br /> <input id = "username" type="text" name="player"> <br /> <input id = "submitun" type ="submit" value="submit">';
+      if (isHighScore) {
+        popup.setAttribute('class', 'popup');
+        feedback.innerHTML = '<p class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</p> <br /><form id="form"><input id="username" type="text" name="player"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
       } else {
         popup.setAttribute('class', 'popup');
-        feedback.innerHTML = '<a href="scores.html" class="lose">You lose! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+        feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+      }
+    } else {
+      popup.setAttribute('class', 'popup');
+      feedback.innerHTML = '<a href="scores.html" class="lose">You lose! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
     } //produce feedback
   }
   guessing = false;
@@ -162,9 +168,14 @@ function spotTwoClick () {
     reveal();
     if(spotTwo.children[0].children[0].id === 'winner'){
       score = speedFactor * shuffles;
-      popup.setAttribute('class', 'popup');
-      feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a> <br /> <input id = "username" type="text" name="player"> <br /> <input id = "submitun" type ="submit" value="submit">';
       isHighScore(score);
+      if (isHighScore) {
+        popup.setAttribute('class', 'popup');
+        feedback.innerHTML = '<p class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</p> <br /><form id="form"><input id="username" type="text" name="player"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
+      } else {
+        popup.setAttribute('class', 'popup');
+        feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+      }
     } else {
       popup.setAttribute('class', 'popup');
       feedback.innerHTML = '<a href="scores.html" class="lose">You lose! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
@@ -179,9 +190,14 @@ function spotThreeClick () {
     reveal();
     if(spotThree.children[0].children[0].id === 'winner'){
       score = speedFactor * shuffles;
-      popup.setAttribute('class', 'popup');
-      feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a> <br /> <input id = "username" type="text" name="player"> <br /> <input id = "submitun" type ="submit" value="submit">';
       isHighScore(score);
+      if (isHighScore) {
+        popup.setAttribute('class', 'popup');
+        feedback.innerHTML = '<p class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</p> <br /><form id="form" onsubmit="formListen()"><input id="username" type="text" name="player"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
+      } else {
+        popup.setAttribute('class', 'popup');
+        feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+      }
     } else {
       popup.setAttribute('class', 'popup');
       feedback.innerHTML = '<a href="scores.html" class="lose">You lose! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
@@ -192,19 +208,8 @@ function spotThreeClick () {
 }
 
 function isHighScore (score) {
-  var curScore = {n: 'zzz', s: score};
-
-  highScores = highScores.sort(function(a, b) {
-    return a.s-b.s;
-  });
-
-  for (var i = 0; i < highScores.length; i++) {
-    if (score > highScores[i].s) {
-      highScores.splice(i+1, 0, curScore);
-      break;
-    }
-  }
-
+  var curScore = {n: '', s: score};
+  highScores.push(score);
   highScores = highScores.sort(function(a, b) {
     return a.s-b.s;
   });
@@ -212,8 +217,12 @@ function isHighScore (score) {
   while (highScores.length > 10) {
     highScores.shift();
   }
-  localStorage.setItem('scores', JSON.stringify(highScores));
-  return highScores;
+
+  if (highScores.indexOf(score) > -1) {
+    return true, highScores;
+  } else {
+    return false, highScores;
+  }
 }
 
 init();
@@ -224,3 +233,19 @@ setTimeout(function(){
 spotOne.addEventListener('click', spotOneClick);
 spotTwo.addEventListener('click', spotTwoClick);
 spotThree.addEventListener('click', spotThreeClick);
+
+function formListen () {
+  form.addEventListener('submit', function() {
+    event.preventDefault();
+
+    var n= event.target.username.value;
+    console.log(n);
+    for (var i=0; i < highScores.length; i++) {
+      if (highScores[i].n === '') {
+        highScores[i].n = n;
+      }
+      localStorage.setItem('scores', JSON.stringify(highScores));
+      window.location('scores.html');
+    }
+  });
+}

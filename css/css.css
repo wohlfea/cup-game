@@ -138,11 +138,6 @@ h1{
   color: gold;
 }
 
-.win:hover {
-  text-decoration: none;
-  color: gold;
-}
-
 .popup {
   animation: popupFeedBack 1s;
   animation-fill-mode: forwards;
