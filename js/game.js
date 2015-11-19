@@ -137,22 +137,34 @@ var Responder = {
   feedback: document.getElementById('feedback'),
   popup: document.getElementById('popup'),
 
+  winHS: function() {
+    this.popup.setAttribute('class', 'popup');
+    this.feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are you?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
+    this.formListen();
+  },
+
+  winNHS: function() {
+    this.popup.setAttribute('class', 'popup');
+    this.feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+  },
+
+  lose: function() {
+    this.popup.setAttribute('class', 'popup');
+    this.feedback.innerHTML = '<a href="scores.html" class="lose">You lose! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+  },
+
   spotOneClick: function() {
     if(guessing) {
       Responder.reveal();
       if(spotOne.children[0].children[0].id === 'winner'){
         score = speedFactor * shuffles;
         if (Responder.isHighScore(score)) {
-          Responder.popup.setAttribute('class', 'popup');
-          Responder.feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are you?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
-          Responder.formListen();
+          Responder.winHS();
         } else {
-          Responder.popup.setAttribute('class', 'popup');
-          Responder.feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+          Responder.winNHS();
         }
       } else {
-        Responder.popup.setAttribute('class', 'popup');
-        Responder.feedback.innerHTML = '<a href="scores.html" class="lose">You lose! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+        Responder.lose();
       }
     }
     guessing = false;
@@ -165,16 +177,12 @@ var Responder = {
       if(spotTwo.children[0].children[0].id === 'winner'){
         score = speedFactor * shuffles;
         if (Responder.isHighScore(score)) {
-          Responder.popup.setAttribute('class', 'popup');
-          Responder.feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are you?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
-          Responder.formListen();
+          Responder.winHS();
         } else {
-          Responder.popup.setAttribute('class', 'popup');
-          Responder.feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+          Responder.winNHS();
         }
       } else {
-        Responder.popup.setAttribute('class', 'popup');
-        Responder.feedback.innerHTML = '<a href="scores.html" class="lose">You lose! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+        Responder.lose();
       }
     }
     guessing = false;
@@ -187,16 +195,12 @@ var Responder = {
       if(spotThree.children[0].children[0].id === 'winner'){
         score = speedFactor * shuffles;
         if (Responder.isHighScore(score)) {
-          Responder.popup.setAttribute('class', 'popup');
-          Responder.feedback.innerHTML = '<p class="win">New High Score! <br />Your score is ' + score + '.<br />Whooo are you?.</p> <br /><form id="form"><input id="username" type="text" name="player" placeholder="---" maxlength="3"> <br /> <input id="submitun" type ="submit" value="submit"></form>';
-          Responder.formListen();
+          Responder.winHS();
         } else {
-          Responder.popup.setAttribute('class', 'popup');
-          Responder.feedback.innerHTML = '<a href="scores.html" class="win">You win! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+          Responder.winNHS();
         }
       } else {
-        Responder.popup.setAttribute('class', 'popup');
-        Responder.feedback.innerHTML = '<a href="scores.html" class="lose">You lose! <br />Your score is ' + score + '.<br />Click to see high scores.</a>';
+        Responder.lose();
       }
     }
     guessing = false;
