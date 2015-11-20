@@ -208,8 +208,8 @@ var Responder = {
   },
 
   reveal: function() {
-    winnerReveal = document.getElementById('winner');
-    winnerReveal.src = 'images/slash/owlslash250.png';
+    var winnerReveal = document.getElementById('winner');
+    winnerReveal.children[0].src = 'images/slash/owlslash250.png';
   },
 
   isHighScore: function(score) {
