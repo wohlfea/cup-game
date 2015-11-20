@@ -1,23 +1,49 @@
-  <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="css/css.css">
-  </head>
-  <body>
-    <section id='wrapper'>
-      <section id='spotOne'>
-        <div id='red'></div>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+  <title>Slash Whooo?</title>
+</head>
+<body>
+<section id='wrap'>
+  <header>
+    <h1>Slash Whooo?</h1>
+    <h3>Which Slash has the family of owls?!</h3>
+    <nav>
+      <p><a href="scores.html">High Scores</a></p>
+      <p><a href="about.html">About Us</a></p>
+    </nav>
+  </header>
+  <section id="main">
+    <h2>Options</h2>
+    <form id="options" action="game.html" method="get">
+        <section id='optrow'>
+          <label for="shuffles">Number of Shuffles: </label>
+          <select name="shuffles">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+          </select>
+        </section>
+      <section id='optrow'>
+          <label for="speed">Speed: </label>
+          <select name="speed">
+            <option value="Slow">Slow</option>
+            <option value="Medium">Medium</option>
+            <option value="Fast">Fast</option>
+          </select>
+        </section>
+      <section id='buttonrow'>
+        <button id="start" type="submit">Start</button>
       </section>
-      <section id='spotTwo'>
-        <div id='blue'></div>
-      </section>
-      <section id='spotThree'>
-        <div id='yellow'></div>
-      </section>
+    </form>
     </section>
-    <script src="js/js.js"></script>
-  </body>
+  </section>
+</section>
+</body>
 </html>
